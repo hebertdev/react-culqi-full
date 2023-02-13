@@ -1,8 +1,8 @@
 {
   "name": "react-culqi-full",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A React library for integration with the Culqi payment processor, compatible with Next.js",
-  "main": "./dist/boudle.js",
+  "main": "./src/boundle.js",
   "scripts": {
     "build": "rollup -c"
   },
