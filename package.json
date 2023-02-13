@@ -1,0 +1,39 @@
+{
+  "name": "react-culqi-full",
+  "version": "0.1.0",
+  "description": "A React library for integration with the Culqi payment processor, compatible with Next.js",
+  "main": "./dist/boudle.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "culqi",
+    "react-culqi",
+    "next-culqi",
+    "react-culqi-full"
+  ],
+  "contributors": [
+    "Hebert Villafuerte (https://github.com/hebertdev/)"
+  ],
+  "author": "hebertdev",
+  "type": "module",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}
