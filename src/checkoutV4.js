@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import CulqiContext from './context';
+import React from "react";
+import { useState, useEffect } from "react";
+import CulqiContext from "./context";
 
 const culqiMessages = {
-  welcome: 'checkout_bienvenido',
-  closed: 'checkout_cerrado',
+  welcome: "checkout_bienvenido",
+  closed: "checkout_cerrado",
 };
 
-const baseCulqiUrl = 'https://checkout.culqi.com';
-const culqiId = 'culqi-js';
+const baseCulqiUrl = "https://checkout.culqi.com";
+const culqiId = "culqi-js";
 const culqiUrl = `${baseCulqiUrl}/js/v4`;
 
 const CulqiCheckoutV4 = (props) => {
@@ -22,7 +23,7 @@ const CulqiCheckoutV4 = (props) => {
   }, [props.options.amount]);
 
   const getCulqiSettings = () => {
-    const { currency = 'PEN', description = '', title = '' } = props.options;
+    const { currency = "PEN", description = "", title = "" } = props.options;
     return {
       amount,
       currency,
@@ -33,20 +34,20 @@ const CulqiCheckoutV4 = (props) => {
 
   useEffect(() => {
     if (!props.publicKey) return;
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.id = culqiId;
     script.src = culqiUrl;
     script.async = true;
     script.onload = onCulqiLoad;
     const culqiScript = script;
     document.body.appendChild(culqiScript);
-    window.addEventListener('message', onCulqiEvent, false);
+    window.addEventListener("message", onCulqiEvent, false);
 
     return () => {
       if (culqiScript) {
         culqiScript.parentNode.removeChild(culqiScript);
       }
-      window.removeEventListener('message', onCulqiEvent, false);
+      window.removeEventListener("message", onCulqiEvent, false);
       window.culqi = undefined;
     };
     // eslint-disable-next-line
@@ -83,19 +84,19 @@ const CulqiCheckoutV4 = (props) => {
     const { onClose, onError, onToken } = props;
     if (origin !== baseCulqiUrl) return;
 
-    if (typeof data === 'string' && data === culqiMessages.closed) {
+    if (typeof data === "string" && data === culqiMessages.closed) {
       onClose && onClose();
 
       initCulqi();
     }
 
-    if (typeof data === 'object') {
+    if (typeof data === "object") {
       const { object } = data;
       if (!object) return;
-      if (object === 'token') {
+      if (object === "token") {
         setToken(data);
         onToken && onToken(data);
-      } else if (object === 'error') {
+      } else if (object === "error") {
         setError(data);
         onError && onError(data);
       }
@@ -121,7 +122,7 @@ const CulqiCheckoutV4 = (props) => {
 
   useEffect(() => {
     if (!props.publicKey) {
-      throw new Error('Please pass along a publicKey prop.');
+      throw new Error("Please pass along a publicKey prop.");
     }
   }, [props.publicKey]);
 
